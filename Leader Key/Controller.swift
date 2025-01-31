@@ -83,7 +83,7 @@ class Controller {
     default:
       // Map key code to English character, ignoring the current input layout
       let keyCode = event.keyCode
-      var char = englishKeyMap[keyCode] ?? ""
+      var char = UserDefaults.standard.bool(forKey: "useEnglishKeyMap") ? (englishKeyMap[keyCode] ?? "") : (event.charactersIgnoringModifiers ?? "")
 
       // Check if Shift is pressed and convert to uppercase if needed
       if event.modifierFlags.contains(.shift) {
